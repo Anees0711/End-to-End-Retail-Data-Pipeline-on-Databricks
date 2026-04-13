@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "global-retail-databricks-pipeline"
+version = "0.1.0"
+description = "End-to-end retail medallion pipeline on Databricks + Power BI."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "DataThrone" }]
+license = { text = "MIT" }
+dependencies = [
+    "pyspark>=3.5.0",
+    "delta-spark>=3.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "pylint>=3.0",
+    "black>=24.0",
+    "isort>=5.13",
+    "mypy>=1.8",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.black]
+line-length = 79
+target-version = ["py310"]
+
+[tool.isort]
+profile = "black"
+line_length = 79
+src_paths = ["src", "tests"]
+
+[tool.pylint.format]
+max-line-length = 79
+
+[tool.pylint."messages control"]
+disable = [
+    "C0114",  # missing-module-docstring (handled per file)
+    "R0801",  # duplicate-code (loaders share boilerplate by design)
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

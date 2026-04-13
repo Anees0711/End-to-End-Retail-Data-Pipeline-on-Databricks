@@ -1,0 +1,36 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Notebooks / Databricks
+.ipynb_checkpoints/
+spark-warehouse/
+metastore_db/
+derby.log
+
+# IDEs / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Logs / secrets
+*.log
+.env
+.env.*
+
+# Power BI
+*.pbix
+
+# Data (keep small samples only)
+data_samples/processed/
+*.parquet
+!data_samples/raw/*.parquet
